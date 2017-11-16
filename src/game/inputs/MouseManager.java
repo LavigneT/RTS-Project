@@ -11,6 +11,7 @@ import java.awt.event.MouseMotionListener;
 
 import game.Handler;
 import game.entities.Entity;
+import game.interfaces.UIManager;
 
 public class MouseManager implements MouseListener, MouseMotionListener{
 	
@@ -21,11 +22,16 @@ public class MouseManager implements MouseListener, MouseMotionListener{
 	private Handler handler;
 	private boolean drawRect = false, timeToSelect = false, unitSelected = false, defocus = false
 			, saveLocation = false;
+	private UIManager uiManager;
 	
 	public MouseManager() {
 		
 	}
 	
+	
+	public void setUiManager(UIManager uiManager) {
+		this.uiManager = uiManager;
+	}
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
@@ -53,6 +59,10 @@ public class MouseManager implements MouseListener, MouseMotionListener{
 	public void mouseMoved(MouseEvent e) {
 		mouseX = e.getX();
 		mouseY = e.getY();
+		
+		if(uiManager != null) {
+			uiManager.onMouseMove(e);
+		}
 		
 	}
 
@@ -111,7 +121,10 @@ public class MouseManager implements MouseListener, MouseMotionListener{
 			x = 0; y = 0; width = 0; height = 0;
 			drawRect = false;
 		}
-
+		
+		if(uiManager != null) {
+			uiManager.MouseOnReleased(e);
+		}
 		
 	}
 	
