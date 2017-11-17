@@ -2,11 +2,8 @@ package game.interfaces;
 
 import java.awt.Graphics;
 
-import javax.swing.plaf.synth.SynthSpinnerUI;
-
 import game.Handler;
 import game.gfx.Assets;
-import game.inputs.KeyManager;
 
 public class Interfaces {
 	
@@ -25,7 +22,6 @@ public class Interfaces {
 		centerX = handler.getWidth()/2;
 		centerY = handler.getHeight()/2;
 		
-		
 		//Build Button
 		uiManager.addObject(new ButtonBuild(handler, centerX - 312,centerY - 120, 60, 50, Assets.buttonBuild, new ClickListener() {
 			
@@ -38,7 +34,7 @@ public class Interfaces {
 			}}));
 		
 		//Tank Button 
-		uiManager.addObject(new ButtonBuild(handler, centerX - 250,centerY - 120, 60, 50, Assets.buttonTank, new ClickListener() {
+		uiManager.addObject(new ButtonBuild(handler, centerX - 248,centerY - 120, 60, 50, Assets.buttonTank, new ClickListener() {
 			
 			//Make the the tankMenu appear
 			@Override

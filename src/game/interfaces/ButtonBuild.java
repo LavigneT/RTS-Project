@@ -8,10 +8,10 @@ import game.gfx.Assets;
 
 public class ButtonBuild extends UIObject{
 	
-	private BufferedImage image;
+	private BufferedImage image[];
 	private ClickListener clicker;
 
-	public ButtonBuild(Handler handler,float x, float y, int width, int height, BufferedImage image, ClickListener clicker) {
+	public ButtonBuild(Handler handler,float x, float y, int width, int height, BufferedImage image[], ClickListener clicker) {
 		super(handler, x, y, width, height);
 		this.image = image;
 		this.clicker = clicker;
@@ -24,10 +24,12 @@ public class ButtonBuild extends UIObject{
 
 	@Override
 	public void rende(Graphics g) {
+		g.drawImage(image[0],(int) x,(int) y, width, height, null);
+		
 		if(hovering)
-			g.drawImage(image , (int)x, (int)y, width, height, null); 
+			g.drawImage(image[1] , (int)x, (int)y, width, height, null); 
 		if(clicked)
-			g.drawImage(image , (int)x, (int)y, width, height, null); 
+			g.drawImage(image[1] , (int)x, (int)y, width, height, null); 
 	}
 
 	@Override

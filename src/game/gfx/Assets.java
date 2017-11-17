@@ -7,10 +7,11 @@ public class Assets {
 	public static BufferedImage[] grass; 
 	public static BufferedImage[] water;
 	public static BufferedImage[] factory1;
+	public static BufferedImage[] buttonBuild, buttonTank, minusButton, plusButton;
 	
 	public static BufferedImage tankUp, tankUpRight, tankRight, tankDownRight, tankDown, tankDownLeft,
 	tankLeft, tankUpLeft;
-	public static BufferedImage interface1, buttonBuild, buttonTank;
+	public static BufferedImage interface1, textField1;
 	
 	public static int tile_dimension = 20, mediumTank_dimension = 20, facto1_height = 42, facto1_width = 38;
 	
@@ -34,7 +35,7 @@ public class Assets {
 		tankDown = tankSheet.crop(mediumTank_dimension +1, 0, mediumTank_dimension , mediumTank_dimension);
 		tankDownLeft = tankSheet.crop(mediumTank_dimension*2+1, 0, mediumTank_dimension, mediumTank_dimension);
 		tankLeft = tankSheet.crop(1, mediumTank_dimension, mediumTank_dimension, mediumTank_dimension);
-		tankRight = tankSheet.crop(mediumTank_dimension*2, mediumTank_dimension, mediumTank_dimension, mediumTank_dimension);
+		tankRight = tankSheet.crop(mediumTank_dimension*2 + 1, mediumTank_dimension, mediumTank_dimension - 1, mediumTank_dimension);
 		tankUpRight = tankSheet.crop(1, mediumTank_dimension*2, mediumTank_dimension, mediumTank_dimension);
 		tankUp= tankSheet.crop(mediumTank_dimension+1, 0, mediumTank_dimension, mediumTank_dimension);
 		tankUpLeft = tankSheet.crop(mediumTank_dimension*2+1, 0, mediumTank_dimension, mediumTank_dimension);
@@ -59,10 +60,32 @@ public class Assets {
 		
 		interface1 = interface1Sheet.crop(0, 0, 320, 200);
 		
-		SpriteSheet buttons = new SpriteSheet(ImageLoader.loadImage("/textures/button.png"));
+		SpriteSheet buttons = new SpriteSheet(ImageLoader.loadImage("/textures/button.bmp"));
 		
-		buttonBuild = buttons.crop(99, 14, 32, 27);
-		buttonTank = buttons.crop(99, 68, 32, 27);
+		buttonBuild =  new BufferedImage[2];
+		
+		buttonBuild[0] = buttons.crop(35, 14, 32, 27);
+		buttonBuild[1] = buttons.crop(99, 14, 32, 27);
+		
+		buttonTank =  new BufferedImage[2];
+		
+		buttonTank[0] = buttons.crop(35, 68, 32, 27);
+		buttonTank[1] = buttons.crop(99, 68, 32, 27);
+		
+		
+		SpriteSheet BuyButtonSheet = new SpriteSheet(ImageLoader.loadImage("/textures/BuyButton.bmp"));
+		
+		textField1 = BuyButtonSheet.crop(202, 142, 75, 12);
+		
+		minusButton =  new BufferedImage[2];
+		
+		minusButton[0] = BuyButtonSheet.crop(20, 92, 40, 18);
+		minusButton[1] = BuyButtonSheet.crop(66, 92, 40, 18);
+		
+		plusButton =  new BufferedImage[2];
+		
+		plusButton[0] = BuyButtonSheet.crop(20, 115, 40, 18);
+		plusButton[1] = BuyButtonSheet.crop(66, 115, 40, 18);
 		
 		
 	}
