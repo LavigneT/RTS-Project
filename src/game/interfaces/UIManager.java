@@ -14,12 +14,25 @@ public class UIManager {
 	public UIManager(Handler handler) {
 		this.handler = handler;
 		objects = new ArrayList<UIObject>();
+		handler.setUiManager(this);
 	}
 	
 	public void tick() {
+
 		for(UIObject o : objects) {
 			o.tick();
-			
+		}
+		
+		//check if we must display various menus, make them display by setting clicked to true 
+		if(handler.getInter().isBuildMenu()) {
+			objects.get(0).setClicked(true);
+		} else {
+			objects.get(0).setClicked(false);
+		}
+		if(handler.getInter().isTankMenu()) {
+			objects.get(1).setClicked(true);
+		} else {
+			objects.get(1).setClicked(false);
 		}
 		
 	}

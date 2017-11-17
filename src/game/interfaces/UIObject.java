@@ -4,8 +4,6 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 
-import javax.swing.plaf.synth.SynthSpinnerUI;
-
 import game.Handler;
 
 public abstract class UIObject {
@@ -97,6 +95,7 @@ public abstract class UIObject {
 	public void setClicked(boolean clicked) {
 		this.clicked = clicked;
 	}
+
 	
 	
 	

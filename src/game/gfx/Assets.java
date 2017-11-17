@@ -10,7 +10,7 @@ public class Assets {
 	
 	public static BufferedImage tankUp, tankUpRight, tankRight, tankDownRight, tankDown, tankDownLeft,
 	tankLeft, tankUpLeft;
-	public static BufferedImage interface1, buttonBuild;
+	public static BufferedImage interface1, buttonBuild, buttonTank;
 	
 	public static int tile_dimension = 20, mediumTank_dimension = 20, facto1_height = 42, facto1_width = 38;
 	
@@ -62,7 +62,7 @@ public class Assets {
 		SpriteSheet buttons = new SpriteSheet(ImageLoader.loadImage("/textures/button.png"));
 		
 		buttonBuild = buttons.crop(99, 14, 32, 27);
-		
+		buttonTank = buttons.crop(99, 68, 32, 27);
 		
 		
 	}
