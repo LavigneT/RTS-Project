@@ -6,19 +6,23 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.plaf.synth.SynthSpinnerUI;
 
+import game.Handler;
+
 public abstract class UIObject {
 	
 	protected float x, y;
 	protected int width, height;
 	protected Rectangle bounds;
-	protected boolean hovering = false; 
+	protected boolean hovering = false, clicked = false; 
+	protected Handler handler;
 	
-	public UIObject (float x, float y, int width, int height) {
+	public UIObject (Handler handler, float x, float y, int width, int height) {
 		this.x = x;
 		this.y = y;
 		this.width = width;
 		this.height = height;
 		bounds  = new Rectangle((int)x, (int)y, width,  height);
+		handler.setObj(this);
 	}
 
 	public abstract void tick();
@@ -38,6 +42,7 @@ public abstract class UIObject {
 	}
 	
 	public void onMouseReleased(MouseEvent e) {
+		
 		if(bounds.contains(e.getX(), e.getY()))
 			onClick();
 	}
@@ -84,6 +89,15 @@ public abstract class UIObject {
 	public void setHover(boolean hovering) {
 		this.hovering = hovering;
 	}
+
+	public boolean isClicked() {
+		return clicked;
+	}
+
+	public void setClicked(boolean clicked) {
+		this.clicked = clicked;
+	}
+	
 	
 	
 	

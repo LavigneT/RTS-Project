@@ -16,16 +16,18 @@ public class Interfaces {
 	public Interfaces(Handler handler) {
 		this.handler = handler;
 		uiManager = new UIManager(handler);
+		handler.getMouseManager().setUiManager(uiManager);
 		
 		centerX = handler.getWidth()/2;
 		centerY = handler.getHeight()/2;
 		
-		uiManager.addObject(new ButtonBuild(centerX,centerY, 60, 50, Assets.buttonBuild, new ClickListener() {
+		uiManager.addObject(new ButtonBuild(handler, centerX - 312,centerY - 120, 60, 50, Assets.buttonBuild, new ClickListener() {
 
 			@Override
-			public void onClick() {
-				//added
-				
+			public void onClick() {	
+				for(UIObject o : uiManager.getObjects())
+					o.setClicked(false);
+				handler.getObj().clicked = true;
 			}}));
 		
 	}
@@ -37,11 +39,12 @@ public class Interfaces {
 			
 	}
 	
+	//don't forget to render UIManager after menu, or nothing buttons wil be display behind the interface
 	public void render(Graphics g) {
 		if(handler.getKeyManager().menu) {
-			uiManager.render(g);
 			g.drawImage(Assets.interface1, handler.getWidth()/2 - interface1_width/2, 
 					handler.getHeight()/2 - interface1_height/2, interface1_width, interface1_height, null);
+			uiManager.render(g);
 		}
 
 	}

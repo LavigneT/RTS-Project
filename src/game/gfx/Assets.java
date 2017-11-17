@@ -61,7 +61,7 @@ public class Assets {
 		
 		SpriteSheet buttons = new SpriteSheet(ImageLoader.loadImage("/textures/button.png"));
 		
-		buttonBuild = buttons.crop(35, 14, 32, 27);
+		buttonBuild = buttons.crop(99, 14, 32, 27);
 		
 		
 		

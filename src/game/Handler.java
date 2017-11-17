@@ -2,12 +2,14 @@ package game;
 
 import game.inputs.KeyManager;
 import game.inputs.MouseManager;
+import game.interfaces.UIObject;
 import game.world.World;
 
 public class Handler {
 	
 	private Game game;
 	private World world;
+	private UIObject obj;
 	
 	public Handler(Game game){
 		this.game = game;
@@ -44,6 +46,16 @@ public class Handler {
 	public float getYOffset() {
 		return game.getGameCamera().getyOffset();
 	}
+
+	public UIObject getObj() {
+		return obj;
+	}
+
+	public void setObj(UIObject obj) {
+		this.obj = obj;
+	}
+	
+	
 	
 	
 }
