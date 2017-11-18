@@ -16,7 +16,7 @@ public class BuildTankdingInterface extends BuildInterface{
 		super(handler);
 		this.handler = handler;
 		
-		//button minus normal
+		//button minus, decrement number of unit to build on click
 		buttons.add(0, new ButtonBuild(handler, handler.getWidth()/2 - 300, handler.getHeight()/2 + 120, 
 				80, 36, Assets.minusButton, new ClickListener() {
 
@@ -28,6 +28,7 @@ public class BuildTankdingInterface extends BuildInterface{
 					}
 		}));
 		
+		//button plus, increment number of unit to build on click
 		buttons.add(0, new ButtonBuild(handler, handler.getWidth()/2 + 40, handler.getHeight()/2 + 120, 
 				80, 36, Assets.plusButton, new ClickListener() {
 

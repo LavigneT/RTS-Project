@@ -7,7 +7,7 @@ public class Assets {
 	public static BufferedImage[] grass; 
 	public static BufferedImage[] water;
 	public static BufferedImage[] factory1;
-	public static BufferedImage[] buttonBuild, buttonTank, minusButton, plusButton, numbers;
+	public static BufferedImage[] buttonBuild, buttonTank, minusButton, plusButton, numbers, hammer, stop;
 	
 	public static BufferedImage tankUp, tankUpRight, tankRight, tankDownRight, tankDown, tankDownLeft,
 	tankLeft, tankUpLeft;
@@ -103,6 +103,17 @@ public class Assets {
 		numbers[8] = numbersSheet.crop(0, 116, 65, 101);
 		numbers[9] = numbersSheet.crop(65,116, 64, 101);
 		
+		SpriteSheet bottomRightButtonsSheet = new SpriteSheet(ImageLoader.loadImage("/textures/buttonBottomRight.bmp"));
+		
+		hammer = new BufferedImage[2];
+		
+		hammer[0] = bottomRightButtonsSheet.crop(18, 37, 23, 18);
+		hammer[1] = bottomRightButtonsSheet.crop(64, 37, 23, 18);
+		
+		stop = new BufferedImage[2];
+		
+		stop[0] = bottomRightButtonsSheet.crop(110, 73, 23, 18);
+		stop[1] = bottomRightButtonsSheet.crop(156, 73, 23, 18);
 		
 	}
 	

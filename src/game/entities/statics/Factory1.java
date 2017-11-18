@@ -13,7 +13,7 @@ public class Factory1 extends StaticEntity{
 	private Animation facto;
 
 	public Factory1(Handler handler, float x, float y) {
-		super(handler, x, y, facto_Width, facto_Height);
+		super(handler, x, y, facto_Width, facto_Height, 60);
 		
 		//change the state of the tile where the factory has been placed to solid
 		handler.getWorld().getSolidMap()[(int)(y /Tile.tile_dimension)]

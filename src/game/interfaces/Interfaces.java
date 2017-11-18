@@ -43,6 +43,25 @@ public class Interfaces {
 				tankMenu = true;
 				
 			}}));
+		
+		//Hammer button on the bottom right side, send order to build something
+		uiManager.addObject(new ButtonBuild(handler, centerX + 242,centerY + 124, 46, 36, Assets.hammer, new ClickListener() {
+			
+			//Make the the buildMenu appear
+			@Override
+			public void onClick() {	
+				
+				
+			}}));
+		
+		//Stop button on the bottom right side, used to cancel a build order
+		uiManager.addObject(new ButtonBuild(handler, centerX + 196,centerY + 124, 46, 36, Assets.stop, new ClickListener() {
+			
+			//Make the the tankMenu appear
+			@Override
+			public void onClick() {	
+				
+			}}));
 	}
 	
 	public void tick() {

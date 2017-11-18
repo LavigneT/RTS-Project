@@ -28,6 +28,7 @@ public class ButtonBuild extends UIObject{
 		
 		if(hovering)
 			g.drawImage(image[1] , (int)x, (int)y, width, height, null); 
+		//the button remain "pressed" if we set this boolean to true
 		if(clicked)
 			g.drawImage(image[1] , (int)x, (int)y, width, height, null); 
 	}
