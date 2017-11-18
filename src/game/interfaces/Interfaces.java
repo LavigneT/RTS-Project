@@ -53,7 +53,9 @@ public class Interfaces {
 			@Override
 			public void onClick() {	
 				if(tankMenu) {
-					handler.getEntityCreator().addToCreateList(3, 0, MediumTank.default_Time_Creation);
+					handler.getEntityCreator().addToCreateList(handler.getUiManager().getInterfaces().get(0).getNumberToBuild()
+							, 0, MediumTank.default_Time_Creation);
+					handler.getUiManager().getInterfaces().get(0).setNumberToBuild(0);
 				}
 				
 			}}));
@@ -67,6 +69,8 @@ public class Interfaces {
 				
 			}}));
 	}
+	
+	//-------------------------------------Tick / render-----------------------------------------
 	
 	public void tick() {
 		if(handler.getKeyManager().menu) {

@@ -19,7 +19,7 @@ public class UIManager {
 		objects = new ArrayList<UIObject>();
 		handler.setUiManager(this);
 		
-		interfaces.add(new BuildTankdingInterface(handler));
+		interfaces.add(new BuildTankInterface(handler));
 		
 		
 	}

@@ -6,6 +6,8 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.swing.plaf.synth.SynthSpinnerUI;
+
 import game.Handler;
 
 class Edge{
@@ -116,7 +118,7 @@ public class AStartV2{
 		this.width  = handler.getWorld().getWidth();
 		this.solidMap = handler.getWorld().getSolidMap();
 
-		
+
 	}
 	
 	public ArrayList<Integer> getPath(int startY, int startX, int destY, int destX) {
@@ -125,7 +127,6 @@ public class AStartV2{
 		
 		List<Edge> openList = new LinkedList();
 		List<Edge>closedList = new LinkedList();
-		
 		//-------------------------------Creations of all Edges (empty)--------------------------------------
 		
 		//Here we create all the Edges, they are set to 0 by default and are null if it is a solid tile
@@ -141,7 +142,7 @@ public class AStartV2{
 						g.addEdge(y, x, width, 1, 0);
 					if(x - 1 >= 0 && solidMap[y][x - 1] != 1)//left
 						g.addEdge(y, x, width, -1, 0);
-					
+					/*
 					//diagonals directions 
 					if(y + 1 < height && x + 1 < width && solidMap[y + 1][x + 1] != 1)//down right
 						g.addEdge(y, x, width, width + 1, 0);
@@ -150,11 +151,11 @@ public class AStartV2{
 					if(y + 1 < height && x - 1 >= 0 && solidMap[y + 1][x - 1] != 1)//down left
 						g.addEdge(y, x, width, width - 1, 0);
 					if(y - 1 >= 0 && x - 1 >= 0 && solidMap[y - 1][x - 1] != 1)//up left
-						g.addEdge(y, x, width, -width - 1, 0);
+						g.addEdge(y, x, width, -width - 1, 0);*/
 				}
 			}
 		}
-		
+
 		
 		
 		//--------------------------------Initialization---------------------------------------------------
@@ -164,7 +165,6 @@ public class AStartV2{
 
 		//add the starting point to the closed list with a value of 0
 		closedList.add(new Edge(idStart, 0));
-		
 		for(Edge e : g.getEdgeById(idStart)) {
 			if(e.getId() == idDest) {
 				found = true;
@@ -177,7 +177,6 @@ public class AStartV2{
 		}
 		
 		openList.sort(valueSorter);
-		
 		//------------------------------------------Main Loop--------------------------------------------------------------
 		//--------------------------------------------------------------------------------------------------------------------
 		
@@ -196,6 +195,8 @@ public class AStartV2{
 			if it does but has a higher value we replace it by this one
 			*
 			*--------------------MISTAKE-------------------------------------------------
+			*
+			*--1
 			*Here is set the following condition with a simple <
 			*if(ed.getValue() <= edge.getValue())
 			*
@@ -206,6 +207,12 @@ public class AStartV2{
 			*the algo indefinitely
 			*It illustrate what we've seen at the training, that number simply "loop" if their
 			*value overlap their type's limit
+			*
+			*---2
+			*
+			*When units were in diagonal movement, the point where their position is determine
+			* (top right) could start on a solid tile 
+			* i had to deactivate the diagonal move for now
 			*/
 			Iterator<Edge> it = closedList.iterator();
 			while(it.hasNext()) {
@@ -284,6 +291,13 @@ public class AStartV2{
 			}
 			//Simply sort the list
 			openList.sort(valueSorter);
+			try {
+				
+				openList.get(0);
+			} catch(Exception e) {
+				
+				e.printStackTrace();
+			}
 			turn ++;
 		}
 		
@@ -308,7 +322,7 @@ public class AStartV2{
 		//Add the coord of last tile to the result
 		coord.add(idDest/width);
 		coord.add(idDest%width);
-
+		
 		//--------------------Main Loop------------------
 		
 		while(!found) {

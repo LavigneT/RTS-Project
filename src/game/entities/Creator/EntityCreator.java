@@ -46,7 +46,7 @@ public class EntityCreator {
 	public void tick() {
 		
 		//update the list every second
-		if(!listEntityToBuild.isEmpty() && System.currentTimeMillis() - lastTime >= 50) {
+		//if(!listEntityToBuild.isEmpty() && System.currentTimeMillis() - lastTime >= 50) {
 			lastTime = System.currentTimeMillis();
 			
 			//Update timers, eventually create new unit
@@ -57,7 +57,7 @@ public class EntityCreator {
 				removeFromList();
 			}
 		}
-	}
+	//}
 
 	
 	public void render(Graphics g) {
@@ -92,9 +92,9 @@ public class EntityCreator {
 			} else {
 				//if the unit was a mediumTank id = 0, timeToBuild = 30
 				if(listEntityToBuild.get(x * 2) <= 0) {
-					entityManager.addEntity(new MediumTank(handler, coord, 300));
+					entityManager.addEntity(new MediumTank(handler, coord, 100));
 					unitCreated = true;
-					coord += 100;
+					
 				}
 			}
 		}

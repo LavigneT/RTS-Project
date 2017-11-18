@@ -25,7 +25,6 @@ public abstract class Entity {
 	tempDirection;
 	protected boolean centerBeforeMove = false, centerY = false, tempoDestinationReached = false
 			, lastTile = false, lastMove = false;
-	//protected EntityCreator entityCreator;
 	
 	public Entity(Handler handler, float x, float y, int width, int height, int buildingTime) {
 		this.handler =  handler;
