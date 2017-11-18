@@ -8,6 +8,8 @@ import java.util.Iterator;
 import java.util.List;
 
 import game.Handler;
+import game.entities.Creator.EntityCreator;
+import game.entities.statics.Factory1;
 import game.entities.units.Unit;
 import game.pathfinding.PlacementAlgo;
 import game.pathfinding.PlacementAlgoV2;
@@ -17,6 +19,8 @@ public class EntityManager {
 	
 	List<Entity> entities = new ArrayList<Entity>();
 	List<Entity> placementEntities = new ArrayList<Entity>();
+	private EntityCreator entityCreator;
+	
 	public Comparator<Entity> sortOnYCoord = new Comparator<Entity>() {
 
 		@Override
@@ -35,6 +39,10 @@ public class EntityManager {
 	
 	public EntityManager(Handler handler) {
 		this.handler = handler;
+		entityCreator = new EntityCreator(handler, this);
+		handler.setEntityCreator(entityCreator);
+		entities.add(new Factory1(handler, Tile.tile_dimension*3, Tile.tile_dimension*3));
+		entities.add(new Factory1(handler, Tile.tile_dimension*5, Tile.tile_dimension*3));
 	}
 	
 	public void tick() {
@@ -65,7 +73,6 @@ public class EntityManager {
 				}
 				e.setSelected(false);
 			}
-			
 			e.tick();
 
 		}
@@ -92,11 +99,15 @@ public class EntityManager {
 			}
 		}
 		handler.getMouseManager().setSaveLocation(false);
+		entityCreator.tick();
 	}
 	
 	public void render(Graphics g) {
+		//render all entities in the game in a sorted order
 		for(Entity e : entities)
 			e.render(g);
+		
+		entityCreator.render(g);
 	}
 
 	public List<Entity> getEntities() {
@@ -106,5 +117,7 @@ public class EntityManager {
 	public void addEntity(Entity e) {
 		entities.add(e);
 	}
+
+	
 	
 }

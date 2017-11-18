@@ -6,6 +6,7 @@ import java.awt.Rectangle;
 import java.util.ArrayList;
 
 import game.Handler;
+import game.entities.Creator.EntityCreator;
 
 public abstract class Entity {
 
@@ -24,6 +25,7 @@ public abstract class Entity {
 	tempDirection;
 	protected boolean centerBeforeMove = false, centerY = false, tempoDestinationReached = false
 			, lastTile = false, lastMove = false;
+	//protected EntityCreator entityCreator;
 	
 	public Entity(Handler handler, float x, float y, int width, int height, int buildingTime) {
 		this.handler =  handler;
@@ -242,6 +244,8 @@ public abstract class Entity {
 	public Rectangle getBounds() {
 		return bounds;
 	}
+
+
 	
 	
 	

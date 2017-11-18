@@ -9,17 +9,19 @@ import game.tiles.Tile;
 
 public class Factory1 extends StaticEntity{
 	
-	public static int facto_Width = Tile.tile_dimension, facto_Height = Tile.tile_dimension;
+	public static int facto_Width = Tile.tile_dimension, facto_Height = Tile.tile_dimension, default_Time_Creation = 60,
+			idFactoy1 = 20;
 	private Animation facto;
 
 	public Factory1(Handler handler, float x, float y) {
-		super(handler, x, y, facto_Width, facto_Height, 60);
+		super(handler, x, y, facto_Width, facto_Height, default_Time_Creation);
 		
 		//change the state of the tile where the factory has been placed to solid
 		handler.getWorld().getSolidMap()[(int)(y /Tile.tile_dimension)]
 				[(int)(x /Tile.tile_dimension)] = 1;
 		
 		facto = new Animation(Assets.factory1, 1000);
+		handler.getEntityCreator().addFactory1(this);
 	}
 
 	@Override

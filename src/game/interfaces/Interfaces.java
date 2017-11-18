@@ -3,6 +3,8 @@ package game.interfaces;
 import java.awt.Graphics;
 
 import game.Handler;
+import game.entities.Creator.EntityCreator;
+import game.entities.units.MediumTank;
 import game.gfx.Assets;
 
 public class Interfaces {
@@ -47,10 +49,12 @@ public class Interfaces {
 		//Hammer button on the bottom right side, send order to build something
 		uiManager.addObject(new ButtonBuild(handler, centerX + 242,centerY + 124, 46, 36, Assets.hammer, new ClickListener() {
 			
-			//Make the the buildMenu appear
+			//
 			@Override
 			public void onClick() {	
-				
+				if(tankMenu) {
+					handler.getEntityCreator().addToCreateList(3, 0, MediumTank.default_Time_Creation);
+				}
 				
 			}}));
 		

@@ -30,48 +30,6 @@ public class World {
 		loadWorld(path);
 		createSolidMap();
 		entityManager = new EntityManager(handler);
-		entityManager.addEntity(new MediumTank(handler, 0, 0));
-		entityManager.addEntity(new MediumTank(handler, 0, 0));
-		entityManager.addEntity(new MediumTank(handler, 0, 0));
-		entityManager.addEntity(new MediumTank(handler, 0, 0));
-		entityManager.addEntity(new MediumTank(handler, 0, 0));
-		entityManager.addEntity(new MediumTank(handler, 0, 0));
-		entityManager.addEntity(new MediumTank(handler, 0, 0));
-		entityManager.addEntity(new MediumTank(handler, 0, 0));
-		entityManager.addEntity(new MediumTank(handler, 0, 0));
-		entityManager.addEntity(new MediumTank(handler, 0, 0));
-		entityManager.addEntity(new MediumTank(handler, 0, 0));
-		entityManager.addEntity(new MediumTank(handler, 0, 0));
-		
-		entityManager.addEntity(new MediumTank(handler, 0, 0));
-		entityManager.addEntity(new MediumTank(handler, 0, 0));
-		entityManager.addEntity(new MediumTank(handler, 0, 0));
-		entityManager.addEntity(new MediumTank(handler, 0, 0));
-		entityManager.addEntity(new MediumTank(handler, 0, 0));
-		entityManager.addEntity(new MediumTank(handler, 0, 0));
-		entityManager.addEntity(new MediumTank(handler, 0, 0));
-		entityManager.addEntity(new MediumTank(handler, 0, 0));
-		entityManager.addEntity(new MediumTank(handler, 0, 0));
-		entityManager.addEntity(new MediumTank(handler, 0, 0));
-		entityManager.addEntity(new MediumTank(handler, 0, 0));
-		entityManager.addEntity(new MediumTank(handler, 0, 0));
-		
-		entityManager.addEntity(new MediumTank(handler, 0, 0));
-		entityManager.addEntity(new MediumTank(handler, 0, 0));
-		entityManager.addEntity(new MediumTank(handler, 0, 0));
-		entityManager.addEntity(new MediumTank(handler, 0, 0));
-		entityManager.addEntity(new MediumTank(handler, 0, 0));
-		entityManager.addEntity(new MediumTank(handler, 0, 0));
-		entityManager.addEntity(new MediumTank(handler, 0, 0));
-		entityManager.addEntity(new MediumTank(handler, 0, 0));
-		entityManager.addEntity(new MediumTank(handler, 0, 0));
-		entityManager.addEntity(new MediumTank(handler, 0, 0));
-		entityManager.addEntity(new MediumTank(handler, 0, 0));
-		entityManager.addEntity(new MediumTank(handler, 0, 0));
-
-
-		
-		entityManager.addEntity(new Factory1(handler, Tile.tile_dimension*3, Tile.tile_dimension*3));
 	}
 	
 	public void tick() {

@@ -8,10 +8,11 @@ import game.gfx.Assets;
 import game.tiles.Tile;
 public class MediumTank extends Unit{
 	
-	public static final int default_width = 40, default_height = 40; 
+	public static final int default_width = 40, default_height = 40, default_Time_Creation = 30,
+			idMediumTank = 0; 
 
 	public MediumTank(Handler handler, float x, float y) {
-		super(handler, x, y, default_width, default_height, 30);
+		super(handler, x, y, default_width, default_height, default_Time_Creation);
 		speed = 4;
 	}
 

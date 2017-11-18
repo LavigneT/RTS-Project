@@ -1,5 +1,6 @@
 package game;
 
+import game.entities.Creator.EntityCreator;
 import game.inputs.KeyManager;
 import game.inputs.MouseManager;
 import game.interfaces.Interfaces;
@@ -14,6 +15,7 @@ public class Handler {
 	private UIObject obj;
 	private Interfaces inter;
 	private UIManager uiManager;
+	private EntityCreator entityCreator;
 	
 	public Handler(Game game){
 		this.game = game;
@@ -75,6 +77,15 @@ public class Handler {
 	public void setUiManager(UIManager uiManager) {
 		this.uiManager = uiManager;
 	}
+
+	public EntityCreator getEntityCreator() {
+		return entityCreator;
+	}
+
+	public void setEntityCreator(EntityCreator entityCreator) {
+		this.entityCreator = entityCreator;
+	}
+	
 	
 	
 	
