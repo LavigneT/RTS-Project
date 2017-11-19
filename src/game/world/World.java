@@ -11,6 +11,7 @@ import game.gfx.Animation;
 import game.gfx.Assets;
 import game.interfaces.BuildingInterface;
 import game.interfaces.MainMenuFrame;
+import game.interfaces.UIManager;
 import game.tiles.Tile;
 import game.utils.Utils;
 
@@ -21,22 +22,23 @@ public class World {
 	private int[][] tilesId, solidMap; 
 	private EntityManager entityManager;
 	private MainMenuFrame interfaces;
-	
+	private UIManager uiManager;
 	
 	public World(Handler handler, String path) {
 		this.handler = handler;
 		handler.setWorld(this);
 		
-		interfaces = new MainMenuFrame(handler);
-		
 		loadWorld(path);
 		createSolidMap();
+		
+		uiManager = new UIManager(handler);
 		entityManager = new EntityManager(handler);
 	}
 	
 	public void tick() {
 		entityManager.tick();
-		interfaces.tick();
+		uiManager.tick();
+		
 	}
 	
 	public void render(Graphics g) {
@@ -52,7 +54,7 @@ public class World {
 			}
 		}
 		entityManager.render(g);
-		interfaces.render(g);
+		uiManager.render(g);
 	}
 	
 	

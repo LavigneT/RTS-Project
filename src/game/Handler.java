@@ -62,11 +62,11 @@ public class Handler {
 		this.obj = obj;
 	}
 
-	public MainMenuFrame getInter() {
+	public MainMenuFrame getMainMenuFrame() {
 		return mainMenuFrame;
 	}
 
-	public void setInter(MainMenuFrame mainMenuFrame) {
+	public void setMainMenuFrame(MainMenuFrame mainMenuFrame) {
 		this.mainMenuFrame = mainMenuFrame;
 	}
 	
