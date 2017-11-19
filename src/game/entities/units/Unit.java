@@ -10,8 +10,8 @@ public abstract class Unit extends Entity{
 	public static final float default_speed = 4.0f;
 	protected float speed;
 
-	public Unit(Handler handler, float x, float y, int width, int height, int buildingTime) {
-		super(handler, x, y, width, height, buildingTime);
+	public Unit(Handler handler, float y, float x, int width, int height, int buildingTime) {
+		super(handler, y, x, width, height, buildingTime);
 		speed = default_speed;
 		destinationX = (int)x;
 		destinationY = (int)y;

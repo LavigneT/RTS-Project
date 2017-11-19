@@ -42,8 +42,9 @@ public class EntityManager {
 		this.handler = handler;
 		entityCreator = new EntityCreator(handler, this);
 		handler.setEntityCreator(entityCreator);
-		entities.add(new Factory1(handler, Tile.tile_dimension*3, Tile.tile_dimension*3));
+		entities.add(new Factory1(handler, Tile.tile_dimension * 2, Tile.tile_dimension*3));
 		entities.add(new Factory1(handler, Tile.tile_dimension*5, Tile.tile_dimension*3));
+		entities.add(new Factory1(handler, Tile.tile_dimension*3, Tile.tile_dimension*5));
 	}
 	
 	public void tick() {

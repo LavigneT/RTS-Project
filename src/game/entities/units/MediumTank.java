@@ -11,8 +11,8 @@ public class MediumTank extends Unit{
 	public static final int default_width = 40, default_height = 40, default_Time_Creation = 30,
 			idMediumTank = 0; 
 
-	public MediumTank(Handler handler, float x, float y) {
-		super(handler, x, y, default_width, default_height, default_Time_Creation);
+	public MediumTank(Handler handler, float y, float x) {
+		super(handler, y, x, default_width, default_height, default_Time_Creation);
 		speed = 4;
 	}
 

@@ -16,7 +16,7 @@ public class World {
 
 	private Handler handler;
 	private int width, height, spawnX, spawnY;
-	private int[][] tilesId, solidMap;
+	private int[][] tilesId, solidMap; 
 	private EntityManager entityManager;
 	private Interfaces interfaces;
 	
