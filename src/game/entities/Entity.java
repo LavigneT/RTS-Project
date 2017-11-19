@@ -2,11 +2,11 @@ package game.entities;
 
 import java.awt.Graphics;
 
+
 import java.awt.Rectangle;
 import java.util.ArrayList;
 
 import game.Handler;
-import game.entities.Creator.EntityCreator;
 
 public abstract class Entity {
 

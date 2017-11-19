@@ -33,7 +33,7 @@ public class Factory1 extends StaticEntity{
 		
 		factoAnim = new Animation(Assets.factory1, 1000);
 		buildingList = new ArrayList<int[]>();
-		handler.getEntityCreator().addFactory1(this);
+		handler.getUnitCreator().addFactory1(this);
 	}
 	
 	

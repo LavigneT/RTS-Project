@@ -104,7 +104,7 @@ public class UIManager {
 				o.onMouseMove(e);
 			}
 			//check if mouse is hover over the tank building interface
-			if(mainMenuFrame.isTankMenu()) {
+			if(mainMenuFrame.isTankMenu() || mainMenuFrame.isBuildMenu()) {
 				for(UIObject o : interfaces.get(0).buttons) {
 					o.onMouseMove(e);
 				}
@@ -121,7 +121,7 @@ public class UIManager {
 			}
 			
 			//check if mouse is clicked on the tank building interface
-			if(mainMenuFrame.isTankMenu()) {
+			if(mainMenuFrame.isTankMenu() || mainMenuFrame.isBuildMenu()) {
 				for(UIObject o : interfaces.get(0).buttons) {
 					o.onMouseReleased(e);
 				}

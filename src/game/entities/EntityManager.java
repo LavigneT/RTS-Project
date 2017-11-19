@@ -2,13 +2,14 @@ package game.entities;
 
 import java.awt.Graphics;
 
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
 import game.Handler;
-import game.entities.Creator.EntityCreator;
+import game.entities.Creator.UnitCreator;
 import game.entities.statics.Factory1;
 import game.entities.units.Builder1;
 import game.entities.units.Unit;
@@ -21,7 +22,7 @@ public class EntityManager {
 	List<Entity> entities = new ArrayList<Entity>();
 	List<Entity> placementEntities = new ArrayList<Entity>();
 	List<Entity> entityToAdd = new ArrayList<Entity>();
-	private EntityCreator entityCreator;
+	private UnitCreator entityCreator;
 	
 	public Comparator<Entity> sortOnYCoord = new Comparator<Entity>() {
 
@@ -41,8 +42,8 @@ public class EntityManager {
 	
 	public EntityManager(Handler handler) {
 		this.handler = handler;
-		entityCreator = new EntityCreator(handler, this);
-		handler.setEntityCreator(entityCreator);
+		entityCreator = new UnitCreator(handler, this);
+		handler.setUnitCreator(entityCreator);
 		entities.add(new Factory1(handler, Tile.tile_dimension * 2, Tile.tile_dimension*3));
 		entities.add(new Factory1(handler, Tile.tile_dimension*5, Tile.tile_dimension*3));
 		entities.add(new Factory1(handler, Tile.tile_dimension*3, Tile.tile_dimension*5));
