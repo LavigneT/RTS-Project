@@ -25,7 +25,7 @@ public class Interfaces {
 		centerY = handler.getHeight()/2;
 		
 		//Build Button
-		uiManager.addObject(new ButtonBuild(handler, centerX - 312,centerY - 120, 60, 50, Assets.buttonBuild, new ClickListener() {
+		uiManager.addObject(new ButtonBuild(handler, centerX - 312,centerY - 118, 60, 50, Assets.buttonBuild, new ClickListener() {
 			
 			//Make the the buildMenu appear
 			@Override
@@ -36,7 +36,7 @@ public class Interfaces {
 			}}));
 		
 		//Tank Button 
-		uiManager.addObject(new ButtonBuild(handler, centerX - 248,centerY - 120, 60, 50, Assets.buttonTank, new ClickListener() {
+		uiManager.addObject(new ButtonBuild(handler, centerX - 248,centerY - 118, 60, 50, Assets.buttonTank, new ClickListener() {
 			
 			//Make the the tankMenu appear
 			@Override
@@ -49,12 +49,22 @@ public class Interfaces {
 		//Hammer button on the bottom right side, send order to build something
 		uiManager.addObject(new ButtonBuild(handler, centerX + 242,centerY + 124, 46, 36, Assets.hammer, new ClickListener() {
 			
-			//
+			/*
+			 *When the button is clicked, the order to build are sent to the entityCreator 
+			 * for each order we create a new int[] composed of the id of the unit and its time to build
+			 *that's why i made a for(), to create the number order require
+			 * then we tick one time the entityCreator and reset the numberToBuild to zero
+			 * 
+			 */
 			@Override
 			public void onClick() {	
 				if(tankMenu) {
-					handler.getEntityCreator().addToCreateList(handler.getUiManager().getInterfaces().get(0).getNumberToBuild()
-							, 0, MediumTank.default_Time_Creation);
+					int tankToBuild = handler.getUiManager().getInterfaces().get(0).getNumberToBuild();
+					for(int x = 0; x < tankToBuild; x++) {
+						handler.getEntityCreator().addOrder(new int[] {MediumTank.idMediumTank, MediumTank.default_Time_Creation});
+					}
+					
+					handler.getEntityCreator().tick();
 					handler.getUiManager().getInterfaces().get(0).setNumberToBuild(0);
 				}
 				

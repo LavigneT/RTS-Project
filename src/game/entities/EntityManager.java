@@ -19,6 +19,7 @@ public class EntityManager {
 	
 	List<Entity> entities = new ArrayList<Entity>();
 	List<Entity> placementEntities = new ArrayList<Entity>();
+	List<Entity> entityToAdd = new ArrayList<Entity>();
 	private EntityCreator entityCreator;
 	
 	public Comparator<Entity> sortOnYCoord = new Comparator<Entity>() {
@@ -99,7 +100,15 @@ public class EntityManager {
 			}
 		}
 		handler.getMouseManager().setSaveLocation(false);
-		entityCreator.tick();
+		
+		/*
+		 *I had to create entity here because factories would had new units to the list while this
+		 *same list was already being iterate.
+		 * It resulted in a "ConcurrentModificationException" that would crash the game
+		 */
+		if(!entityToAdd.isEmpty()) {
+			createEntity();
+		}
 	}
 	
 	public void render(Graphics g) {
@@ -107,8 +116,18 @@ public class EntityManager {
 		for(Entity e : entities)
 			e.render(g);
 		
-		entityCreator.render(g);
+		//entityCreator.render(g);
 	}
+	
+	public void createEntity() {
+		for(Entity ent : entityToAdd) {
+			entities.add(ent);
+		}
+		entityToAdd.clear();
+	}
+	
+	
+	//----------------------------------------Getters and setters--------------------------------------
 
 	public List<Entity> getEntities() {
 		return entities;
@@ -118,6 +137,10 @@ public class EntityManager {
 		entities.add(e);
 	}
 
+	public void addEntityToAdd(Entity e) {
+		entityToAdd.add(e);
+	}
+	
 	
 	
 }

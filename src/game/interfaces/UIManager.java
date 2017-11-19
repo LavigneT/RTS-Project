@@ -6,12 +6,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import game.Handler;
-import game.gfx.Assets;
 
 public class UIManager {
-	
+		
 	private Handler handler;
 	private ArrayList<UIObject> objects;
+	
+	/*
+	 * ----------------Indexes of interfaces
+	 * 
+	 * 0 - BuildTankInterface
+	 * 
+	 */
 	private List<BuildInterface> interfaces = new ArrayList<>();
 	
 	public UIManager(Handler handler) {
@@ -20,8 +26,6 @@ public class UIManager {
 		handler.setUiManager(this);
 		
 		interfaces.add(new BuildTankInterface(handler));
-		
-		
 	}
 	
 	public void tick() {
