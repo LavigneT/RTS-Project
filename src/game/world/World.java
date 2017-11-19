@@ -2,13 +2,15 @@ package game.world;
 
 import java.awt.Graphics;
 
+
 import game.Handler;
 import game.entities.EntityManager;
 import game.entities.statics.Factory1;
 import game.entities.units.MediumTank;
 import game.gfx.Animation;
 import game.gfx.Assets;
-import game.interfaces.Interfaces;
+import game.interfaces.BuildingInterface;
+import game.interfaces.MainMenuFrame;
 import game.tiles.Tile;
 import game.utils.Utils;
 
@@ -18,14 +20,14 @@ public class World {
 	private int width, height, spawnX, spawnY;
 	private int[][] tilesId, solidMap; 
 	private EntityManager entityManager;
-	private Interfaces interfaces;
+	private MainMenuFrame interfaces;
 	
 	
 	public World(Handler handler, String path) {
 		this.handler = handler;
 		handler.setWorld(this);
 		
-		interfaces = new Interfaces(handler);
+		interfaces = new MainMenuFrame(handler);
 		
 		loadWorld(path);
 		createSolidMap();

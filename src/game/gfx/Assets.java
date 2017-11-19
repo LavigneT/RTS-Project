@@ -14,6 +14,7 @@ public class Assets {
 	public static BufferedImage builder1Up, builder1UpRight, builder1Right, builder1DownRight, builder1Down, builder1DownLeft,
 	builder1Left, builder1UpLeft;
 	public static BufferedImage interface1, textField1;
+	public static BufferedImage buildFactory1;
 	
 	public static int tile_dimension = 20, mediumTank_dimension = 20, facto1_height = 42, facto1_width = 38;
 	
@@ -57,6 +58,8 @@ public class Assets {
 		factory1[8] = facto1sheet.crop(facto1_width + 3, 79, facto1_width, facto1_height);
 		factory1[9] = facto1sheet.crop(facto1_width * 2 + 5, 79, facto1_width, facto1_height);		
 		factory1[10] = facto1sheet.crop(facto1_width * 3 + 7, 79, facto1_width, facto1_height);
+		
+		buildFactory1 = facto1sheet.crop(181, 87, 38, 34);
 		
 		SpriteSheet interface1Sheet = new SpriteSheet(ImageLoader.loadImage("/textures/interface1.bmp"));
 		

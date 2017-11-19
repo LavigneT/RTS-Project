@@ -25,7 +25,7 @@ public class UIManager {
 		objects = new ArrayList<UIObject>();
 		handler.setUiManager(this);
 		
-		interfaces.add(new BuildTankInterface(handler));
+		interfaces.add(new BuildingInterface(handler));
 	}
 	
 	public void tick() {
@@ -38,7 +38,10 @@ public class UIManager {
 		if(handler.getInter().isBuildMenu()) {
 			//Top icon
 			objects.get(0).setClicked(true);
-			//
+			//tick the button in the choice menu contain in the list
+			for(UIObject o : interfaces.get(0).buttons) {
+				o.tick();
+			}
 		} else {
 			objects.get(0).setClicked(false);
 		}
@@ -62,7 +65,7 @@ public class UIManager {
 			o.rende(g);
 		}
 		//If tank menu is clicked render textField and image in the top right "screen"
-		if(handler.getInter().isTankMenu()) {
+		if(handler.getInter().isTankMenu() || handler.getInter().isBuildMenu()) {
 			interfaces.get(0).render(g);
 			for(UIObject o : interfaces.get(0).buttons) {
 				o.rende(g);

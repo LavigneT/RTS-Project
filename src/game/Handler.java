@@ -1,9 +1,10 @@
 package game;
 
 import game.entities.Creator.EntityCreator;
+
 import game.inputs.KeyManager;
 import game.inputs.MouseManager;
-import game.interfaces.Interfaces;
+import game.interfaces.MainMenuFrame;
 import game.interfaces.UIManager;
 import game.interfaces.UIObject;
 import game.world.World;
@@ -13,7 +14,7 @@ public class Handler {
 	private Game game;
 	private World world;
 	private UIObject obj;
-	private Interfaces inter;
+	private MainMenuFrame mainMenuFrame;
 	private UIManager uiManager;
 	private EntityCreator entityCreator;
 	
@@ -61,12 +62,12 @@ public class Handler {
 		this.obj = obj;
 	}
 
-	public Interfaces getInter() {
-		return inter;
+	public MainMenuFrame getInter() {
+		return mainMenuFrame;
 	}
 
-	public void setInter(Interfaces inter) {
-		this.inter = inter;
+	public void setInter(MainMenuFrame mainMenuFrame) {
+		this.mainMenuFrame = mainMenuFrame;
 	}
 	
 
