@@ -188,7 +188,7 @@ public class Factory1 extends StaticEntity{
 				}
 			}
 		}
-		System.out.println(countPostion);
+		
 		//determine Y coord depending on the state of countPostion and the available tile
 		if(countPostion == 0)
 			result = (int)(y - 4 - unitHeight);

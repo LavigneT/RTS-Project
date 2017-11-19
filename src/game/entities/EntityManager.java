@@ -10,6 +10,7 @@ import java.util.List;
 import game.Handler;
 import game.entities.Creator.EntityCreator;
 import game.entities.statics.Factory1;
+import game.entities.units.Builder1;
 import game.entities.units.Unit;
 import game.pathfinding.PlacementAlgo;
 import game.pathfinding.PlacementAlgoV2;
@@ -45,6 +46,7 @@ public class EntityManager {
 		entities.add(new Factory1(handler, Tile.tile_dimension * 2, Tile.tile_dimension*3));
 		entities.add(new Factory1(handler, Tile.tile_dimension*5, Tile.tile_dimension*3));
 		entities.add(new Factory1(handler, Tile.tile_dimension*3, Tile.tile_dimension*5));
+		entities.add(new Builder1(handler, 100, 100));
 	}
 	
 	public void tick() {
