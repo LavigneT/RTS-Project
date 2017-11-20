@@ -38,11 +38,13 @@ public abstract class Entity {
 		bounds = new Rectangle(0, 0, width, height);
 	}
 	
+	public void die() {
+		
+	}
 	
 	public abstract void tick();
 	
 	public abstract void render(Graphics g);
-	
 
 	
 	public boolean isSelected() {

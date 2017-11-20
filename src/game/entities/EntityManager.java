@@ -21,7 +21,10 @@ public class EntityManager {
 	
 	List<Entity> entities = new ArrayList<Entity>();
 	List<Entity> placementEntities = new ArrayList<Entity>();
+	
+	//see comment at the end of tick
 	List<Entity> entityToAdd = new ArrayList<Entity>();
+	
 	private UnitCreator entityCreator;
 	
 	public Comparator<Entity> sortOnYCoord = new Comparator<Entity>() {
@@ -45,9 +48,6 @@ public class EntityManager {
 		entityCreator = new UnitCreator(handler, this);
 		handler.setUnitCreator(entityCreator);
 		
-		entities.add(new Factory1(handler, Tile.tile_dimension * 2, Tile.tile_dimension*3));
-		entities.add(new Factory1(handler, Tile.tile_dimension*5, Tile.tile_dimension*3));
-		entities.add(new Factory1(handler, Tile.tile_dimension*3, Tile.tile_dimension*5));
 		entities.add(new Builder1(handler, 100, 100));
 	}
 	

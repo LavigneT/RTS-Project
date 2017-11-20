@@ -1,5 +1,6 @@
 package game;
 
+import game.entities.Creator.BuildingCreator;
 import game.entities.Creator.UnitCreator;
 import game.inputs.KeyManager;
 import game.inputs.MouseManager;
@@ -16,6 +17,7 @@ public class Handler {
 	private MainMenuFrame mainMenuFrame;
 	private UIManager uiManager;
 	private UnitCreator unitCreator;
+	private BuildingCreator buildingCreator;
 	
 	public Handler(Game game){
 		this.game = game;
@@ -84,6 +86,14 @@ public class Handler {
 
 	public void setUnitCreator(UnitCreator unitCreator) {
 		this.unitCreator = unitCreator;
+	}
+
+	public BuildingCreator getBuildingCreator() {
+		return buildingCreator;
+	}
+
+	public void setBuildingCreator(BuildingCreator buildingCreator) {
+		this.buildingCreator = buildingCreator;
 	}
 	
 	
