@@ -42,6 +42,7 @@ public class PlacementAlgoV2 {
 		setFinalDestination();
 	}
 	
+	
 	private void setFinalDestination() {
 		
 		//Directions :

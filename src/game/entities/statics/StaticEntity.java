@@ -8,8 +8,8 @@ import game.entities.Entity;
 public abstract class StaticEntity extends Entity {
 
 	
-	public StaticEntity(Handler handler, float y, float x, int width, int height, int buildingTime) {
-		super(handler, y, x, width, height, buildingTime);
+	public StaticEntity(Handler handler, float y, float x, int width, int height) {
+		super(handler, y, x, width, height);
 	}
 	
 	public abstract void tick();

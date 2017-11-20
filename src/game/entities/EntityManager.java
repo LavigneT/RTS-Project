@@ -21,6 +21,7 @@ public class EntityManager {
 	
 	List<Entity> entities = new ArrayList<Entity>();
 	List<Entity> placementEntities = new ArrayList<Entity>();
+	List<Builder1> builderSelected = new ArrayList<>();
 	
 	//see comment at the end of tick
 	List<Entity> entityToAdd = new ArrayList<Entity>();
@@ -49,9 +50,11 @@ public class EntityManager {
 		handler.setUnitCreator(entityCreator);
 		
 		entities.add(new Builder1(handler, 100, 100));
+		entities.add(new Builder1(handler, 100, 100));
+		entities.add(new Builder1(handler, 100, 100));
 	}
 	
-	public void tick() {
+	public void tick(){
 		
 		entities.sort(sortOnYCoord);
 		
@@ -72,6 +75,12 @@ public class EntityManager {
 						handler.getWorld().getSolidMap()[(int)((handler.getMouseManager().getDestinationY() + handler.getYOffset())/Tile.tile_dimension)]
 								[(int)((handler.getMouseManager().getDestinationX() + (int)handler.getXOffset())/Tile.tile_dimension)] == 0) {
 					
+					//if the buildingCreator is active, the player may want to send builder to building site
+					if(handler.getUiManager().isBuildingCreatorActive() && e.getClass().getSimpleName().equals("Builder1")) {
+						Builder1 builder = (Builder1) e;
+						builderSelected.add(builder);
+						
+					}
 					e.setDestinationX(handler.getMouseManager().getDestinationX() + (int)handler.getXOffset());
 					e.setDestinationY(handler.getMouseManager().getDestinationY() + (int)handler.getYOffset());
 					placementEntities.add(e);
@@ -144,6 +153,10 @@ public class EntityManager {
 
 	public void addEntityToAdd(Entity e) {
 		entityToAdd.add(e);
+	}
+
+	public List<Builder1> getBuilderSelected() {
+		return builderSelected;
 	}
 	
 	
