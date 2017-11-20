@@ -3,6 +3,7 @@ package game.entities.statics.constructions;
 import java.awt.Graphics;
 
 import game.Handler;
+import game.entities.statics.Factory1;
 import game.entities.statics.StaticEntity;
 import game.entities.units.Builder1;
 import game.gfx.Assets;
@@ -11,8 +12,9 @@ import game.tiles.Tile;
 public class ConstructionFactory1 extends Construction{
 	
 	public static int facto_Width = Tile.tile_dimension, facto_Height = Tile.tile_dimension; 
-	public static final int default_Time_Creation = 60, idFactoy1 = 21;
+	public static final int default_Time_Creation = 20, idFactoy1 = 21;
 	public static int[] emplacementY_X = new int[8];
+	
 
 	public ConstructionFactory1(Handler handler, float y, float x) {
 		super(handler, y, x, facto_Width, facto_Height, default_Time_Creation);
@@ -80,9 +82,14 @@ public class ConstructionFactory1 extends Construction{
 		}
 	}
 	
-	private void checkCompletion() {
-		
+	public void build() {
+		handler.getWorld().getEntityManager().addEntityToAdd(new Factory1(handler,(int)y, (int)x));
+		die();
 	}
+	
+	
+	//Getters and setters
+
 	
 
 }

@@ -89,7 +89,10 @@ public class EntityManager {
 				e.setSelected(false);
 			}
 			e.tick();
-
+			if(e.die) {
+				e = null;
+				it.remove();
+			}
 		}
 		//At the end to allows several entities to get the same order
 		handler.getMouseManager().setTimeToSelect(false);

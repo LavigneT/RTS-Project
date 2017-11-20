@@ -18,7 +18,7 @@ public abstract class Entity {
 	public static final int default_health = 5;
 	protected Rectangle bounds;
 	protected int health;
-	protected boolean selected, startMoving, calculatePath;
+	protected boolean selected, startMoving, calculatePath, die = false;
 	protected int destinationX, destinationY;
 	protected ArrayList<Integer> movementOrder;
 	protected int temporaryDestX, temporaryDestY, tempY, tempX, 
@@ -39,7 +39,7 @@ public abstract class Entity {
 	}
 	
 	public void die() {
-		
+		die = true;
 	}
 	
 	public abstract void tick();

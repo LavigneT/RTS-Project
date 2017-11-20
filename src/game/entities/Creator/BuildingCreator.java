@@ -130,20 +130,41 @@ public class BuildingCreator {
 	
 	//------------------------------------------sendBuilderToConstructionSite--------------------------------------------------
 	
+	/*
+	 *This method receive the mouseRelease event, 
+	 *1st - it first check for all constructions if their bounds contains the point where the mouse was released
+	 * 2nd - if it was released on a building, it check if builder were selected in the EntityManager at that time
+	 * I had to create a list of builder because the entityManager ticked before this class and by the 
+	 * time this code was executed there was no more unit considered selected
+	 * 
+	 * 3rd - if builder were selected, it means the player wanted to send builder to the constructions
+	 * We give to these builders path and destination, in accordance with the available emplacements still
+	 * available, we also increment the number of unit on the site
+	 * Finally we clear the list of selectedBuilders in case some weren't remove yet
+	 */
+	
 	private void sendBuilderToConstructionSite(MouseEvent e) {
+		//1st
 		for(Construction c : constructions) {
 			if(c.getBounds().contains(e.getPoint())) {
+				//2nd
 				for(int x = 0; x < c.getBuilderEmplacement().length; x++) {
+					//3rd
 					if(c.getBuilderEmplacement()[x] == true && !handler.getWorld().getEntityManager().getBuilderSelected().isEmpty()) {
 						Builder1 builder = handler.getWorld().getEntityManager().getBuilderSelected().get(0);
 						
-						//Temporary code
+						//Temporary code give order to move to builder
 						builder.setDestinationY(ConstructionFactory1.emplacementY_X[x*2]);
 						builder.setDestinationX(ConstructionFactory1.emplacementY_X[x*2+1]);
+						
 						//the place have been attributed
 						c.getBuilderEmplacement()[x] = false;
+						
+						//add one builder on site (it is used to determine speed of construction)
+						c.setNumberOfBuilderOnSite(c.getNumberOfBuilderOnSite() + 1);
 						handler.getWorld().getEntityManager().getBuilderSelected().remove(0);
 						
+						//A*
 						PathFinding path = new PathFinding(handler);
 						path.initAStart(builder);
 					}

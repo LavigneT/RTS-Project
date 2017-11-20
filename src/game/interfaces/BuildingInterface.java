@@ -16,6 +16,11 @@ public class BuildingInterface extends BuildInterface{
 	 * All interface that build things in the menu share this buttons and actions
 	 * that is why we check which menu is currently active
 	 * 
+	 * Contains the following UIObjects : 
+	 * -button minus
+	 * -button plus
+	 * -Textfield (display quantity)
+	 * 
 	 */
 	
 	public BuildingInterface(Handler handler) {
