@@ -44,6 +44,7 @@ public class EntityManager {
 		this.handler = handler;
 		entityCreator = new UnitCreator(handler, this);
 		handler.setUnitCreator(entityCreator);
+		
 		entities.add(new Factory1(handler, Tile.tile_dimension * 2, Tile.tile_dimension*3));
 		entities.add(new Factory1(handler, Tile.tile_dimension*5, Tile.tile_dimension*3));
 		entities.add(new Factory1(handler, Tile.tile_dimension*3, Tile.tile_dimension*5));

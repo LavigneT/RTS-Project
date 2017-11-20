@@ -6,18 +6,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 import game.Handler;
+import game.entities.Creator.BuildingCreator;
 
 public class UIManager {
 		
 	private Handler handler;
 	private ArrayList<UIObject> mainFrameObjects;
 	private MainMenuFrame mainMenuFrame;
+	private BuildingCreator buildingCreator;
+	private boolean buildingCreatorActive = false;
+	private long timeWhenClicked;
 	
 	/*
 	 * Instantiate in World.java
 	 * 
-	 * This class receive mouseEvent from the MouseManager, and transmit to the button by going 
-	 * through the list
+	 * This class receive mouseEvent from the MouseManager, and transmit to the buttons (UIObject)
+	 * by going through the list
 	 * 
 	 * ----------------Indexes of interfaces
 	 * 
@@ -34,6 +38,7 @@ public class UIManager {
 		
 		interfaces.add(new BuildingInterface(handler));
 		mainMenuFrame = new MainMenuFrame(handler, this);
+		buildingCreator = new BuildingCreator(handler, this);
 		
 	}
 	
@@ -72,8 +77,8 @@ public class UIManager {
 			
 		}
 		
-		
-		
+		if(buildingCreatorActive)
+			buildingCreator.tick();
 	}
 	
 	public void render(Graphics g) {
@@ -93,6 +98,9 @@ public class UIManager {
 				}
 			}
 		}
+		
+		if(buildingCreatorActive)
+			buildingCreator.render(g);
 	}
 	
 	public void onMouseMove(MouseEvent e) {
@@ -110,6 +118,8 @@ public class UIManager {
 				}
 			}
 		}
+		if(buildingCreatorActive)
+			buildingCreator.onMouseMove(e);
 	}
 	
 	public void MouseOnReleased(MouseEvent e) {
@@ -127,10 +137,18 @@ public class UIManager {
 				}
 			}
 		}
-
 		
-
+		if(buildingCreatorActive) {
+			//I had to set a timer here avoid the BuildingCreator being immediately closed
+			if(System.currentTimeMillis() - timeWhenClicked > 750)
+				buildingCreator.MouseOnReleased(e);
+		}
+			
+		
 	}
+	
+	
+	//Getters and Setters
 	
 	public void addMainFrameObjects(UIObject o ) {
 		mainFrameObjects.add(o);
@@ -162,6 +180,22 @@ public class UIManager {
 	
 	public void  addInterfaces(BuildInterface interfa) {
 		interfaces.add(interfa);
+	}
+
+	public boolean isBuildingCreatorActive() {
+		return buildingCreatorActive;
+	}
+
+	public void setBuildingCreatorActive(boolean buildingCreatorActive) {
+		this.buildingCreatorActive = buildingCreatorActive;
+	}
+
+	public BuildingCreator getBuildingCreator() {
+		return buildingCreator;
+	}
+
+	public void setTimeWhenClicked(long timeWhenClicked) {
+		this.timeWhenClicked = timeWhenClicked;
 	}
 	
 	

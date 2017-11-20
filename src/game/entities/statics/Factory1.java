@@ -12,8 +12,9 @@ import game.tiles.Tile;
 
 public class Factory1 extends StaticEntity{
 	
-	public static int facto_Width = Tile.tile_dimension, facto_Height = Tile.tile_dimension, default_Time_Creation = 60,
-			idFactoy1 = 20;
+	public static int facto_Width = Tile.tile_dimension, facto_Height = Tile.tile_dimension; 
+			
+	public static final int default_Time_Creation = 60, idFactoy1 = 20;
 	private Animation factoAnim;
 	private List<int[]> buildingList; 
 	private long lastTime;
