@@ -28,7 +28,7 @@ public class ConstructionFactory1 extends Construction{
 	@Override
 	public void tick() {
 		
-		checkCompletion();
+		//checkCompletion();
 		
 		bounds.x = (int)(x - handler.getXOffset());
 		bounds.y = (int)(y - handler.getYOffset());
@@ -45,42 +45,42 @@ public class ConstructionFactory1 extends Construction{
 		//if up tile can host a builder
 		if((int)(y /Tile.tile_dimension) - 1 >= 0 && handler.getWorld().getSolidMap()[(int)(y /Tile.tile_dimension) - 1]
 				[(int)(x / Tile.tile_dimension)] == 0) {
-			builderEmplacement[0] = true;
+			builderEmplacement[0] = 0;
 			emplacementY_X[0] = (int)(y - 40);
 			emplacementY_X[1] = (int)(x + 20 + (Tile.tile_dimension- Builder1.default_width)/2);
 			
 		} else {
-			builderEmplacement[0] = false;
+			builderEmplacement[0] = 1;
 		}
 		
 		//right Tile can host a builder
 		if((int)(x /Tile.tile_dimension) + 1 <= handler.getWorld().getHeight() && 
 				handler.getWorld().getSolidMap()[(int)(y /Tile.tile_dimension)][(int)(x / Tile.tile_dimension) + 1] == 0) {
-			builderEmplacement[1] = true;
+			builderEmplacement[1] = 0;
 			emplacementY_X[2] = (int)(y + (Tile.tile_dimension- Builder1.default_height)/2);
 			emplacementY_X[3] = (int)(x + width + 10);
 		} else {
-			builderEmplacement[1] = false;
+			builderEmplacement[1] = 1;
 		}
 		
 		//bottom Tile can host a builder
 		if((int)(y /Tile.tile_dimension) + 1 <= handler.getWorld().getWidth() && 
 				handler.getWorld().getSolidMap()[(int)(y /Tile.tile_dimension) + 1][(int)(x / Tile.tile_dimension)] == 0) {
-			builderEmplacement[2] = true;
+			builderEmplacement[2] = 0;
 			emplacementY_X[4] = (int)(y + 10 + facto_Height);
 			emplacementY_X[5] = (int)(x + (Tile.tile_dimension- Builder1.default_width)/2);
 		} else {
-			builderEmplacement[2] = false;
+			builderEmplacement[2] = 1;
 		}
 		
 		//left Tile can host a builder
 		if((int)(x /Tile.tile_dimension) - 1 >= 0 && 
 				handler.getWorld().getSolidMap()[(int)(y /Tile.tile_dimension)][(int)(x / Tile.tile_dimension) - 1] == 0) {
-			builderEmplacement[3] = true;
+			builderEmplacement[3] = 0;
 			emplacementY_X[6] = (int)(y + (Tile.tile_dimension- Builder1.default_height)/2);
 			emplacementY_X[7] = (int)(x - 10);
 		} else {
-			builderEmplacement[3] = false;
+			builderEmplacement[3] = 0;
 		}
 	}
 	

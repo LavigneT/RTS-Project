@@ -6,38 +6,35 @@ import game.entities.statics.StaticEntity;
 public abstract class Construction extends StaticEntity{
 	
 	protected int buildingTime, numberOfBuilderOnSite;
-	protected boolean[] builderEmplacement;
 	protected long lastTime;
-	protected int[] emplacementY_X;	
+	protected int[] emplacementY_X, builderEmplacement;	
 	
 	
 
 	public Construction(Handler handler, float y, float x, int width, int height, int buildingTime) {
 		super(handler, y, x, width, height);
 		this.buildingTime = buildingTime;
-		builderEmplacement = new boolean[4];
+		builderEmplacement = new int[4];
 		emplacementY_X = new int[8];
 	}
 	
 	
 	public void checkCompletion() {
-		if(System.currentTimeMillis() - lastTime >= 1000) {
-			lastTime = System.currentTimeMillis();
-			buildingTime -= numberOfBuilderOnSite;
-			if(buildingTime <= 0)
-				build();
+		
+		buildingTime--;
+			
+		if(buildingTime <= 0)				
+			build();
 		}
-
-	}
 	
 	public abstract void build();
 	//Getters and setters
 	
-	public boolean[] getBuilderEmplacement() {
+	public int[] getBuilderEmplacement() {
 		return builderEmplacement;
 	}
 
-	public void setBuilderEmplacement(boolean[] builderEmplacement) {
+	public void setBuilderEmplacement(int[] builderEmplacement) {
 		this.builderEmplacement = builderEmplacement;
 	}
 	
@@ -52,4 +49,16 @@ public abstract class Construction extends StaticEntity{
 	public int[] getEmplacementY_X() {
 		return emplacementY_X;
 	}
+
+
+	public int getBuildingTime() {
+		return buildingTime;
+	}
+
+
+	public void setBuildingTime(int buildingTime) {
+		this.buildingTime = buildingTime;
+	}
+	
+	
 }

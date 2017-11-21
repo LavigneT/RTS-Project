@@ -146,6 +146,14 @@ public class BuildingCreator {
 	 * We give to these builders path and destination, in accordance with the available emplacements still
 	 * available, we also increment the number of unit on the site
 	 * Finally we clear the list of selectedBuilders in case some weren't remove yet
+	 * 
+	 * 4th : IMPORTANT
+	 * I had to create this method to clear the current construction the builder was working on
+	 * and reset it's emplacement to 0. I i put this in the builder class, it would not execute because
+	 * by that time builder would have gotten his new order.
+	 * It resulted in a bug where when i wanted to swicth construction, the previous construction would 
+	 * have its emplacements still occpied and not builder could come back finish it
+	 * 
 	 */
 	
 	private void sendBuilderToConstructionSite(MouseEvent e) {
@@ -155,17 +163,23 @@ public class BuildingCreator {
 				//2nd
 				for(int x = 0; x < c.getBuilderEmplacement().length; x++) {
 					//3rd
-					if(c.getBuilderEmplacement()[x] == true && !handler.getWorld().getEntityManager().getBuilderSelected().isEmpty()) {
+					if(c.getBuilderEmplacement()[x] == 0 && !handler.getWorld().getEntityManager().getBuilderSelected().isEmpty()) {
 						Builder1 builder = handler.getWorld().getEntityManager().getBuilderSelected().get(0);
-						//Temporary code give order to move to builder
+						//give destination to the builder
 						builder.setDestinationY(c.getEmplacementY_X()[x*2]);
 						builder.setDestinationX(c.getEmplacementY_X()[x*2+1]);
 						
-						//the place have been attributed
-						c.getBuilderEmplacement()[x] = false;
+						//4th
+						if(builder.getWorkOn() != null)
+							builder.clearWorkOn();
 						
-						//add one builder on site (it is used to determine speed of construction)
-						c.setNumberOfBuilderOnSite(c.getNumberOfBuilderOnSite() + 1);
+						builder.setWorkOn(c);
+						builder.setIdEmplacement(x);
+						
+						//the place have been attributed
+						c.getBuilderEmplacement()[x] = 2;
+						
+						//remove the builder from the list where selected builders were stored
 						handler.getWorld().getEntityManager().getBuilderSelected().remove(0);
 						
 						//A*

@@ -65,7 +65,7 @@ public class EntityManager {
 	public void tick(){
 		
 		entities.sort(sortOnYCoord);
-		
+		//System.out.println(builderSelected.size());
 		//To select Units / trigger algos placement movement
 		Iterator<Entity> it = entities.iterator();
 		while(it.hasNext()) {
@@ -79,7 +79,7 @@ public class EntityManager {
 				}
 			} else if(handler.getMouseManager().isDefocus()) {
 				//if the buildingCreator is active, the player may want to send builder to building site
-				if(handler.getUiManager().isBuildingCreatorActive() && e.getClass().getSimpleName().equals("Builder1")) {
+				if(handler.getUiManager().isBuildingCreatorActive() && e.getClass().getSimpleName().equals("Builder1") && e.isSelected()) {
 					Builder1 builder = (Builder1) e;
 					builderSelected.add(builder);
 					
@@ -170,6 +170,11 @@ public class EntityManager {
 	public List<Builder1> getBuilderSelected() {
 		return builderSelected;
 	}
+
+	public List<Entity> getPlacementEntities() {
+		return placementEntities;
+	}
+	
 	
 	
 	
