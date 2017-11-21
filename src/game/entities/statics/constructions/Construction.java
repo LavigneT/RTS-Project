@@ -8,11 +8,15 @@ public abstract class Construction extends StaticEntity{
 	protected int buildingTime, numberOfBuilderOnSite;
 	protected boolean[] builderEmplacement;
 	protected long lastTime;
+	protected int[] emplacementY_X;	
+	
+	
 
 	public Construction(Handler handler, float y, float x, int width, int height, int buildingTime) {
 		super(handler, y, x, width, height);
 		this.buildingTime = buildingTime;
 		builderEmplacement = new boolean[4];
+		emplacementY_X = new int[8];
 	}
 	
 	
@@ -45,5 +49,7 @@ public abstract class Construction extends StaticEntity{
 		this.numberOfBuilderOnSite = numberOfBuilderOnSite;
 	}
 	
-	
+	public int[] getEmplacementY_X() {
+		return emplacementY_X;
+	}
 }

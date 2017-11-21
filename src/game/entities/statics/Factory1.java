@@ -28,7 +28,7 @@ public class Factory1 extends StaticEntity{
 		handler.getWorld().getSolidMap()[(int)(y /Tile.tile_dimension)]
 				[(int)(x /Tile.tile_dimension)] = 1;
 		
-		//Check surrounding tiles for positioning
+		//Check surrounding tiles for positioning units around 
 		possiblePostion = new int[8];
 		createPossiblePostion();
 		

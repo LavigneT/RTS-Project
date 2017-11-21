@@ -124,7 +124,6 @@ public class AStartV2{
 	public ArrayList<Integer> getPath(int startY, int startX, int destY, int destX) {
 		int idDest = destY * width + destX, idStart =  startY * width + startX;
 		Graph g = new Graph(width * height);
-		
 		List<Edge> openList = new LinkedList();
 		List<Edge>closedList = new LinkedList();
 		//-------------------------------Creations of all Edges (empty)--------------------------------------

@@ -24,6 +24,13 @@ public class MouseManager implements MouseListener, MouseMotionListener{
 			, saveLocation = false;
 	private UIManager uiManager;
 	
+	/*
+	 * This class can open the Menu interface when the mouse is clicked
+	 * 
+	 * 
+	 * 
+	 */
+	
 	public MouseManager() {
 		
 	}
@@ -69,14 +76,17 @@ public class MouseManager implements MouseListener, MouseMotionListener{
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		
-		for(Entity ent : handler.getWorld().getEntityManager().getEntities()) {
-			if(ent.getBounds().contains(e.getPoint())) {
-				if(handler.getKeyManager().menu)
-					handler.getKeyManager().menu = false;
-				else
-					handler.getKeyManager().menu = true;
+		if(e.getButton() == MouseEvent.BUTTON1){
+			for(Entity ent : handler.getUnitCreator().getFactories1()) {
+				if(ent.getBounds().contains(e.getPoint())) {
+					if(handler.getKeyManager().menu)
+						handler.getKeyManager().menu = false;
+					else
+						handler.getKeyManager().menu = true;
+				}
 			}
 		}
+
 		
 		
 		
@@ -124,6 +134,7 @@ public class MouseManager implements MouseListener, MouseMotionListener{
 		
 		if(uiManager != null) {
 			uiManager.MouseOnReleased(e);
+			
 		}
 		
 	}

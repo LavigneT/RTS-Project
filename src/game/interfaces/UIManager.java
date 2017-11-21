@@ -142,6 +142,7 @@ public class UIManager {
 			//I had to set a timer here avoid the BuildingCreator being immediately closed
 			if(System.currentTimeMillis() - timeWhenClicked > 750)
 				buildingCreator.MouseOnReleased(e);
+			
 		}
 			
 		

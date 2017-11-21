@@ -37,6 +37,7 @@ public class BuildingCreator {
 		this.handler = handler;
 		this.uiManager = uiManager2;
 		handler.setBuildingCreator(this);
+		
 	}
 	
 	/*----------------------------Tick-----------------------------------
@@ -52,6 +53,7 @@ public class BuildingCreator {
 		if(orders.isEmpty() && constructions.isEmpty()) {
 			uiManager.setBuildingCreatorActive(false);
 		}
+		
 	}
 	
 	public void render(Graphics g) {
@@ -64,6 +66,8 @@ public class BuildingCreator {
 			}
 		}
 	}
+	
+	//-------------------------------------------------MouseEvents-------------------------------------------------------
 	
 	public void onMouseMove(MouseEvent e) {
 		mouseX = e.getX();
@@ -123,6 +127,7 @@ public class BuildingCreator {
 					((int)(mouseY + handler.getYOffset())/Tile.tile_dimension)*Tile.tile_dimension, 
 					((int)(mouseX + handler.getXOffset())/Tile.tile_dimension)*Tile.tile_dimension);
 					constructions.add(newFacto);
+					
 					handler.getWorld().getEntityManager().addEntity(newFacto);
 			orders.remove(0);
 		}
@@ -150,13 +155,14 @@ public class BuildingCreator {
 				//2nd
 				for(int x = 0; x < c.getBuilderEmplacement().length; x++) {
 					//3rd
+					System.out.println(c.getBuilderEmplacement()[x]);
+					System.out.println(!handler.getWorld().getEntityManager().getBuilderSelected().isEmpty());
 					if(c.getBuilderEmplacement()[x] == true && !handler.getWorld().getEntityManager().getBuilderSelected().isEmpty()) {
 						Builder1 builder = handler.getWorld().getEntityManager().getBuilderSelected().get(0);
-						
 						//Temporary code give order to move to builder
-						builder.setDestinationY(ConstructionFactory1.emplacementY_X[x*2]);
-						builder.setDestinationX(ConstructionFactory1.emplacementY_X[x*2+1]);
-						
+						builder.setDestinationY(c.getEmplacementY_X()[x*2]);
+						builder.setDestinationX(c.getEmplacementY_X()[x*2+1]);
+						System.out.println("ok");
 						//the place have been attributed
 						c.getBuilderEmplacement()[x] = false;
 						

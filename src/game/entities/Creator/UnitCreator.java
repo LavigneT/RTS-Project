@@ -53,6 +53,7 @@ public class UnitCreator {
 		}
 	}
 	
+	
 	//getters and setters
 	
 	public void addFactory1(Factory1 f) {
@@ -62,4 +63,10 @@ public class UnitCreator {
 	public void addOrder(int[] newOrder) {
 		orders.add(newOrder);
 	}
+
+	public ArrayList<Factory1> getFactories1() {
+		return factories1;
+	}
+	
+	
 }

@@ -13,12 +13,14 @@ public class ConstructionFactory1 extends Construction{
 	
 	public static int facto_Width = Tile.tile_dimension, facto_Height = Tile.tile_dimension; 
 	public static final int default_Time_Creation = 20, idFactoy1 = 21;
-	public static int[] emplacementY_X = new int[8];
 	
 
 	public ConstructionFactory1(Handler handler, float y, float x) {
 		super(handler, y, x, facto_Width, facto_Height, default_Time_Creation);
 		
+		//change the state of the tile where the factory has been placed to solid
+		//handler.getWorld().getSolidMap()[(int)(y /Tile.tile_dimension)]
+			//	[(int)(x /Tile.tile_dimension)] = 1;
 		
 		checkSurroundingEmplacement();
 	}
@@ -86,9 +88,11 @@ public class ConstructionFactory1 extends Construction{
 		handler.getWorld().getEntityManager().addEntityToAdd(new Factory1(handler,(int)y, (int)x));
 		die();
 	}
-	
+
 	
 	//Getters and setters
+	
+
 
 	
 
