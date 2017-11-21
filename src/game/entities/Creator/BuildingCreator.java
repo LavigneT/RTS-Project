@@ -155,14 +155,12 @@ public class BuildingCreator {
 				//2nd
 				for(int x = 0; x < c.getBuilderEmplacement().length; x++) {
 					//3rd
-					System.out.println(c.getBuilderEmplacement()[x]);
-					System.out.println(!handler.getWorld().getEntityManager().getBuilderSelected().isEmpty());
 					if(c.getBuilderEmplacement()[x] == true && !handler.getWorld().getEntityManager().getBuilderSelected().isEmpty()) {
 						Builder1 builder = handler.getWorld().getEntityManager().getBuilderSelected().get(0);
 						//Temporary code give order to move to builder
 						builder.setDestinationY(c.getEmplacementY_X()[x*2]);
 						builder.setDestinationX(c.getEmplacementY_X()[x*2+1]);
-						System.out.println("ok");
+						
 						//the place have been attributed
 						c.getBuilderEmplacement()[x] = false;
 						
