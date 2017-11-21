@@ -19,8 +19,8 @@ public class ConstructionFactory1 extends Construction{
 		super(handler, y, x, facto_Width, facto_Height, default_Time_Creation);
 		
 		//change the state of the tile where the factory has been placed to solid
-		//handler.getWorld().getSolidMap()[(int)(y /Tile.tile_dimension)]
-			//	[(int)(x /Tile.tile_dimension)] = 1;
+		handler.getWorld().getSolidMap()[(int)(y /Tile.tile_dimension)]
+				[(int)(x /Tile.tile_dimension)] = 1;
 		
 		checkSurroundingEmplacement();
 	}

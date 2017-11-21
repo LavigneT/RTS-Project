@@ -42,6 +42,14 @@ public class EntityManager {
 		
 	};
 	
+	/*
+	 * This tick and render all entities in the game
+	 * It also put aside builder in a list so that they can be used by the BuildingCreator to send
+	 * builders on a construction site. This code is located before the test of "solidity" as for now
+	 * the constructionFactory1 have a 1 index in the solid map and that would prevent  the 
+	 * "builderSelected" list from being updated.
+	 */
+	
 	private Handler handler;
 	
 	public EntityManager(Handler handler) {
@@ -70,17 +78,18 @@ public class EntityManager {
 					}
 				}
 			} else if(handler.getMouseManager().isDefocus()) {
+				//if the buildingCreator is active, the player may want to send builder to building site
+				if(handler.getUiManager().isBuildingCreatorActive() && e.getClass().getSimpleName().equals("Builder1")) {
+					Builder1 builder = (Builder1) e;
+					builderSelected.add(builder);
+					
+				}
 				if(handler.getMouseManager().isSaveLocation() && e.isSelected() && 
 						//only trigger movements algorithms if the destination is not solid
 						handler.getWorld().getSolidMap()[(int)((handler.getMouseManager().getDestinationY() + handler.getYOffset())/Tile.tile_dimension)]
 								[(int)((handler.getMouseManager().getDestinationX() + (int)handler.getXOffset())/Tile.tile_dimension)] == 0) {
 					
-					//if the buildingCreator is active, the player may want to send builder to building site
-					if(handler.getUiManager().isBuildingCreatorActive() && e.getClass().getSimpleName().equals("Builder1")) {
-						Builder1 builder = (Builder1) e;
-						builderSelected.add(builder);
-						
-					}
+
 					e.setDestinationX(handler.getMouseManager().getDestinationX() + (int)handler.getXOffset());
 					e.setDestinationY(handler.getMouseManager().getDestinationY() + (int)handler.getYOffset());
 					placementEntities.add(e);
