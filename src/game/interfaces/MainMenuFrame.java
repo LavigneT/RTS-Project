@@ -122,7 +122,7 @@ public class MainMenuFrame {
 		int factory1ToBuild = handler.getUiManager().getInterfaces().get(0).getNumberToBuild();
 		//If we have factories1 to build, send the number of array require composed of id and timeToBuild
 		for(int x = 0; x < factory1ToBuild; x++) {
-			handler.getUiManager().getBuildingCreator().addOrder(new int[] {Factory1.idFactoy1, ConstructionFactory1.default_Time_Creation});
+			handler.getUiManager().getBuildingCreator().addOrder(new int[] {Factory1.idFactoy1, (int)ConstructionFactory1.default_Time_Creation});
 		}
 		uiManager.getInterfaces().get(0).setNumberToBuild(0);
 		handler.getKeyManager().menu = false;

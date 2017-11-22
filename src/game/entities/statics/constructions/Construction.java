@@ -1,21 +1,24 @@
 package game.entities.statics.constructions;
 
+
 import game.Handler;
 import game.entities.statics.StaticEntity;
 
 public abstract class Construction extends StaticEntity{
 	
-	protected int buildingTime, numberOfBuilderOnSite;
+	protected int numberOfBuilderOnSite;
 	protected long lastTime;
 	protected int[] emplacementY_X, builderEmplacement;	
+	protected float buildingTime;
 	
 	
 
-	public Construction(Handler handler, float y, float x, int width, int height, int buildingTime) {
+	public Construction(Handler handler, float y, float x, int width, int height, float buildingTime) {
 		super(handler, y, x, width, height);
 		this.buildingTime = buildingTime;
 		builderEmplacement = new int[4];
 		emplacementY_X = new int[8];
+		
 	}
 	
 	
@@ -51,7 +54,7 @@ public abstract class Construction extends StaticEntity{
 	}
 
 
-	public int getBuildingTime() {
+	public double getBuildingTime() {
 		return buildingTime;
 	}
 

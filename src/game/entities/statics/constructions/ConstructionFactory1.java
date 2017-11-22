@@ -1,10 +1,10 @@
 package game.entities.statics.constructions;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 import game.Handler;
 import game.entities.statics.Factory1;
-import game.entities.statics.StaticEntity;
 import game.entities.units.Builder1;
 import game.gfx.Assets;
 import game.tiles.Tile;
@@ -12,7 +12,8 @@ import game.tiles.Tile;
 public class ConstructionFactory1 extends Construction{
 	
 	public static int facto_Width = Tile.tile_dimension, facto_Height = Tile.tile_dimension; 
-	public static final int default_Time_Creation = 20, idFactoy1 = 21;
+	public static final int idFactoy1 = 21;
+	public static final float default_Time_Creation = 20.0f;
 	
 
 	public ConstructionFactory1(Handler handler, float y, float x) {
@@ -23,6 +24,7 @@ public class ConstructionFactory1 extends Construction{
 				[(int)(x /Tile.tile_dimension)] = 1;
 		
 		checkSurroundingEmplacement();
+		
 	}
 
 	@Override
@@ -37,6 +39,11 @@ public class ConstructionFactory1 extends Construction{
 	@Override
 	public void render(Graphics g) {
 		g.drawImage(Assets.buildFactory1, (int)x, (int)y, facto_Width, facto_Height, null);
+		
+		//Progress Bar
+		g.setColor(Color.black);
+		g.drawRect((int)x, (int)y - 12, facto_Width, 8);
+		g.fillRect((int)x, (int)y - 12, Math.round(((default_Time_Creation-buildingTime)/default_Time_Creation)*100 * facto_Width/100), 8);
 	}
 	
 	
