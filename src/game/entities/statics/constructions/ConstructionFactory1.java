@@ -13,7 +13,7 @@ public class ConstructionFactory1 extends Construction{
 	
 	public static int facto_Width = Tile.tile_dimension, facto_Height = Tile.tile_dimension; 
 	public static final int idFactoy1 = 21;
-	public static final float default_Time_Creation = 20.0f;
+	public static final float default_Time_Creation = 40.0f;
 	
 
 	public ConstructionFactory1(Handler handler, float y, float x) {

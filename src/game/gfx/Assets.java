@@ -13,7 +13,7 @@ public class Assets {
 	tankLeft, tankUpLeft;
 	public static BufferedImage builder1Up, builder1UpRight, builder1Right, builder1DownRight, builder1Down, builder1DownLeft,
 	builder1Left, builder1UpLeft;
-	public static BufferedImage interface1, textField1;
+	public static BufferedImage interface1, textField1, arrowRight, arrowLeft;
 	public static BufferedImage buildFactory1;
 	
 	public static int tile_dimension = 20, mediumTank_dimension = 20, facto1_height = 42, facto1_width = 38;
@@ -130,6 +130,12 @@ public class Assets {
 		builder1DownLeft = builder1Sheet.crop(1, mediumTank_dimension*2, mediumTank_dimension, mediumTank_dimension);
 		builder1Down = builder1Sheet.crop(mediumTank_dimension, mediumTank_dimension*2, mediumTank_dimension, mediumTank_dimension);
 		builder1DownRight = builder1Sheet.crop(mediumTank_dimension*2, mediumTank_dimension*2, mediumTank_dimension, mediumTank_dimension);
+		
+		SpriteSheet arrowSheet = new SpriteSheet(ImageLoader.loadImage("/textures/arrow.png"));
+		
+		arrowRight = arrowSheet.crop(0, 0, 192, 182);
+		arrowLeft = arrowSheet.crop(192, 0, 192, 182);
+		
 	}
 	
 	

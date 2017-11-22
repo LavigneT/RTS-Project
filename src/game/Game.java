@@ -85,6 +85,7 @@ public class Game implements Runnable{
 		if(State.getCurrentState()!=null)
 			State.getCurrentState().render(g);
 		mouseManager.render(g);
+		g.drawImage(Assets.arrowLeft, 100, 100, null);
 		//stop drawing
 		bs.show();
 		g.dispose();
